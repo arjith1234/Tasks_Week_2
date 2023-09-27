@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Display Current Day and Time</title>
+</head>
+<body>
+  <button id="showDateButton">Show Date</button>
+  <p id="dateOutput"></p>
+  
+  <button id="showTimeButton">Show Time</button>
+  <p id="timeOutput"></p>
+
+  <script>
+    function formatDateAsRequired(date) {
+      const day = date.getDate();
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const month = monthNames[date.getMonth()];
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    function displayCurrentDate() {
+      const currentDate = new Date();
+      const formattedDate = formatDateAsRequired(currentDate);
+      document.getElementById("dateOutput").textContent = `${formattedDate}`;
+    }
+
+    function displayCurrentTime() {
+      const currentDate = new Date();
+      const formattedTime = currentDate.toString();
+      document.getElementById("timeOutput").textContent = `${formattedTime}`;
+    }
+
+    document.getElementById("showDateButton").addEventListener("click", displayCurrentDate);
+    document.getElementById("showTimeButton").addEventListener("click", displayCurrentTime);
+  </script>
+</body>
+</html>

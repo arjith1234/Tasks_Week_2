@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+                body {            
+            background-image: linear-gradient(to bottom right, rgb(234, 234, 111), rgb(238, 93, 238));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;                        
+          }
+
+          .container {
+            text-align: center;
+        }
+
+        h1{
+          color:blue;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin-top: 20px;
+        }    
+
+        table td:nth-child(odd) {
+            font-weight: bold;
+        }
+
+        .field-status {
+            font-weight: bold;
+            color: red;
+        }
+
+        .field-status.normal {
+            color: green;
+        }
+
+        button.register-button {
+            background-color: red; 
+            color: white; 
+            border: 2px solid black; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            border-radius: 500px;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Registration Form</h1>
+    <table >
+        <tr>
+            <td>FIRSTNAME</td>
+            <td><input type="text" id="firstname"></td>
+            <td><span class="field-status">Poor</span></td>
+        </tr>
+        <tr>
+            <td>LASTNAME</td>
+            <td><input type="text" id="lastname"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+
+        <tr>
+            <td>EMAIL</td>
+            <td><input type="text" id="email"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+            <td><input type="password" id="password"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>RE PASSWORD</td>
+            <td><input type="password" id="repassword"></td>
+            <td><span class="field-status">Poor or Mistaken</span></td>
+
+        </tr>
+        <tr>
+            <td>GENDER</td>
+            <td>
+                <input type="radio" name="gender" value="male"> Male
+                <br>
+                <input type="radio" name="gender" value="female"> Female
+            </td>
+        </tr>
+        <tr>
+            <td>AGE</td>
+            <td><input type="text" id="age"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>PHONE NUMBER</td>
+            <td><input type="text" id="phonenumber"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>ADDRESS</td>
+            <td><input type="text" id="address"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>STATE</td>
+            <td><input type="text" id="state"></td>
+            <td><span class="field-status">Poor</span></td>
+
+        </tr>
+        <tr>
+            <td>COUNTRY</td>
+            <td>
+                <select name="c" id="country">
+                    <option value="c">Choose your country</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Russia">Russia</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>LANGUAGES KNOWN</td>
+            <td>
+                <input type="checkbox" id="english"> English
+                <input type="checkbox" id="hindi"> Hindi
+                <input type="checkbox" id="kannada"> Kannada
+                <input type="checkbox" id="telugu"> Telugu
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="declaration"></td>
+            <td>Hereby I declare all the given details are true</td>
+        </tr>
+        <tr>
+            <td>                               </td>
+            <td><a>Login to<a href="www.ethnus.com"> Ethnus </a>Website</a></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+              <button class="register-button">Register</button>
+          </td>
+      </tr>
+      
+
+    </table>
+  </div>
+
+    <script>
+        const inputFields = document.querySelectorAll('input[type="text"], input[type="password"], input[type="checkbox"], input[type="radio"], select');
+        
+        inputFields.forEach(field => {
+            field.addEventListener('input', validateField);
+        });
+        
+        function validateField() {
+            const fieldName = this.id;
+            const fieldValue = this.value;
+            const fieldStatus = this.parentElement.nextElementSibling.querySelector('.field-status');
+            
+            if (fieldValue.trim() === '') {
+                fieldStatus.textContent = 'Poor';
+                fieldStatus.classList.remove('normal'); 
+            } else {
+                fieldStatus.textContent = 'Normal';
+                fieldStatus.classList.add('normal'); 
+            }
+        }
+    </script>
+</body>
+</html>
